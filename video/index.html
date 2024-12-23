@@ -1,0 +1,217 @@
+<html>
+<head>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>YouTube</title>
+	<link rel="icon" href="images/favicon.png" type="image/png">
+  <style>
+    .live-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 5px 10px;
+      font-size: 12px;
+      font-weight: bold;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .live-badge .red-dot {
+      width: 8px;
+      height: 8px;
+      background-color: red;
+      border-radius: 50%;
+      margin-right: 5px;
+      animation: blink 2s infinite;
+    }
+
+    @keyframes blink {
+      0%, 50%, 100% {
+        opacity: 1;
+      }
+      25%, 75% {
+        opacity: 0;
+      }
+    }
+
+    .loading-icon {
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .reply {
+      margin-left: 2rem;
+      border-left: 2px solid gray;
+      padding-left: 1rem;
+    }
+
+    .comments-section {
+      background-color: #1a1a1a;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+	  margin: 1rem 1rem;
+    }
+  </style>
+</head>
+<body class="bg-black text-white font-sans">
+  <div class="w-full max-w-7xl mx-auto">
+    <!-- Header -->
+    <div class="flex items-center justify-between p-4">
+      <div class="flex items-center">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/YouTube_dark_logo_2017.svg/320px-YouTube_dark_logo_2017.svg.png" alt="YouTube Logo" class="h-8"/>
+      </div>
+      <div class="flex items-center space-x-4">
+        <i class="fas fa-search text-white text-xl"></i>
+        <i class="fas fa-ellipsis-v text-white text-xl"></i>
+      </div>
+    </div>
+
+    <!-- Video Section -->
+    <div class="relative w-full" style="padding-bottom: 56.25%; position: relative;">
+      <div class="live-badge">
+        <div class="red-dot"></div>
+        LIVE | <span id="viewerCount" class="ml-1"></span> <span class="ml-1">viewers</span>
+      </div>
+      <div id="vid_67100eb45a2bc3000b632c5f" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+        <img id="thumb_67100eb45a2bc3000b632c5f" src="https://images.converteai.net/7ee76c7b-b701-481f-b973-2b478faae041/players/67100eb45a2bc3000b632c5f/thumbnail.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;">
+        <div id="backdrop_67100eb45a2bc3000b632c5f" style="position:absolute;top:0;width:100%;height:100%;-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);"></div>
+      </div>
+      <script type="text/javascript" id="scr_67100eb45a2bc3000b632c5f"> 
+        var s=document.createElement("script"); 
+        s.src="https://scripts.converteai.net/7ee76c7b-b701-481f-b973-2b478faae041/players/67100eb45a2bc3000b632c5f/player.js", 
+        s.async=!0,document.head.appendChild(s); 
+      </script>
+    </div>
+
+    <!-- Video Details -->
+    <div class="p-4">
+      <h1 class="text-white text-lg font-bold">'The Key to Financial Freedom in 2025': Find Out How it Works!</h1>    
+    </div>
+
+    <!-- Channel Info -->
+    <div class="flex items-center p-4">
+      <img alt="Channel profile picture" class="rounded-full" height="40" src="images/logomassalud.jpg" width="40"/>
+      <div class="ml-2">
+        <p class="text-white text-sm font-bold">Brian Anderson</p>
+        <p class="text-gray-400 text-xs">81.8K subscribers</p>
+      </div>
+      <button id="subscribeBtn" class="bg-white text-black text-sm font-bold px-4 py-2 rounded ml-4">Subscribe</button>
+    </div>
+
+    <!-- Comments Section -->
+    <div class="comments-section">
+      <h2 class="text-lg font-bold mb-4">Showing 5 comments</h2>
+      <div class="space-y-4">
+        <div class="flex items-start space-x-4">
+          <img src="images/user1.jpg" alt="Sophia Smith" class="w-10 h-10 rounded-full"/>
+          <div>
+            <p class="text-sm font-bold">Sophia Smith</p>
+            <p class="text-sm">My kids here in New York are using and they helping to pay the internet and energy bill, it's good for something lol</p>
+            <div class="flex items-center space-x-4 mt-2 text-gray-400 text-sm">
+              <i class="fas fa-thumbs-up"></i>
+              <i class="fas fa-thumbs-down"></i>
+              <span>Reply</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="reply flex items-start space-x-4">
+          <img src="images/user2.jpg" alt="Olivia Davis" class="w-10 h-10 rounded-full"/>
+          <div>
+            <p class="text-sm font-bold">Olivia Davis</p>
+            <p class="text-sm">Good thing I saw it all. The button appears at the end of the video! Here in New York there are some people using it.<br>Finally something that works!</p>
+            <div class="flex items-center space-x-4 mt-2 text-gray-400 text-sm">
+              <i class="fas fa-thumbs-up"></i>
+              <i class="fas fa-thumbs-down"></i>
+              <span>Reply</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4">
+          <img src="images/user3.jpg" alt="Tom Morgan" class="w-10 h-10 rounded-full"/>
+          <div>
+            <p class="text-sm font-bold">Tom Morgan</p>
+            <p class="text-sm">It's not complicated, just watch everything on video and click on the button that appears at the end</p>
+            <div class="flex items-center space-x-4 mt-2 text-gray-400 text-sm">
+              <i class="fas fa-thumbs-up"></i>
+              <i class="fas fa-thumbs-down"></i>
+              <span>Reply</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4">
+          <img src="images/user4.jpg" alt="John Williams" class="w-10 h-10 rounded-full"/>
+          <div>
+            <p class="text-sm font-bold">John Williams</p>
+            <p class="text-sm">How does it work? I also want to start someone Help me !!! I want to buy for myself</p>
+            <div class="flex items-center space-x-4 mt-2 text-gray-400 text-sm">
+              <i class="fas fa-thumbs-up"></i>
+              <i class="fas fa-thumbs-down"></i>
+              <span>Reply</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="reply flex items-start space-x-4">
+          <img src="images/user5.jpg" alt="Isabella Ramirez" class="w-10 h-10 rounded-full"/>
+          <div>
+            <p class="text-sm font-bold">Isabella Ramirez</p>
+            <p class="text-sm">Watch the video until the end. at the end of the video will drop a button and then you will click on it.</p>
+            <div class="flex items-center space-x-4 mt-2 text-gray-400 text-sm">
+              <i class="fas fa-thumbs-up"></i>
+              <i class="fas fa-thumbs-down"></i>
+              <span>Reply</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-center items-center mt-4">
+        <button id="loadMoreBtn" class="bg-gray-700 text-white px-4 py-2 rounded text-sm flex items-center mt-8">
+          Load More Comments
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+
+    loadMoreBtn.addEventListener('click', () => {
+      loadMoreBtn.innerHTML = '<i class="fas fa-spinner loading-icon mr-2"></i>Loading...';
+    });
+
+    const subscribeBtn = document.getElementById('subscribeBtn');
+
+    subscribeBtn.addEventListener('click', () => {
+      subscribeBtn.innerText = 'Subscribed';
+      subscribeBtn.style.backgroundColor = '#1a1a1a'; // Cor do fundo dos comentários
+		subscribeBtn.style.color = 'white'; // Deixe o texto branco para visibilidade
+      subscribeBtn.classList.remove('bg-white', 'text-black');
+    });
+
+    function updateViewerCount() {
+      const viewers = Math.floor(Math.random() * (1400 - 1200 + 1)) + 1200;
+      document.getElementById('viewerCount').innerText = viewers;
+    }
+
+    setInterval(updateViewerCount, 2550);
+    updateViewerCount();
+  </script>
+</body>
+</html>
