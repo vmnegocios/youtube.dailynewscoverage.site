@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube</title>
+	<link rel="icon" href="images/favicon.png" type="image/png">
+    <style>
+        body {
+            background-color: #F3F2F2;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Sessão 1 */
+        .topo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-container, .balance-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 10px;
+        }
+
+        .logo {
+            height: auto;
+            width: auto;
+            max-height: 50px;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .balance {
+            background-color: #02CC02;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1rem;
+            white-space: nowrap;
+        }
+
+        /* Linha divisória */
+        .divider {
+            height: 2px;
+            background-color: #ccc;
+            margin: 0;
+        }
+
+        /* Centralizar elementos */
+        .central-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Sessão 2 */
+        .aviso {
+            background-color: #D1E7DD;
+            color: #0A3622;
+            padding: 15px;
+            margin: 15px;
+            border-radius: 10px;
+            font-size: calc(0.8rem + 0.5vw);
+            line-height: 1.5;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .aviso strong {
+            font-weight: bold;
+        }
+
+        /* Sessão 3 e 4 */
+        .conteudo {
+            margin: 20px;
+            max-width: 90%;
+        }
+
+        .titulo {
+            font-weight: bold;
+            color: black;
+            font-size: calc(1rem + 0.5vw);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .video {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+        }
+
+        .video iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .container-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            gap: 10px;
+        }
+
+        .foto {
+            height: calc(40px + 1vw);
+            width: calc(40px + 1vw);
+            border-radius: 50%;
+        }
+
+        .info {
+            font-size: calc(0.8rem + 0.2vw);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info .nome {
+            font-weight: bold;
+        }
+
+        .botoes {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .botoes button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: calc(0.8rem + 0.2vw);
+            width: 150px;
+        }
+
+        .botoes .nao-gostei {
+            background-color: white;
+            color: #0D6EFD;
+            border: 1px solid #0D6EFD;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .botoes .nao-gostei:hover {
+            background-color: #0D6EFD;
+            color: white;
+        }
+
+        .botoes .gostei {
+            background-color: #0D6EFD;
+            color: white;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .botoes .gostei:hover {
+            background-color: white;
+            color: #0D6EFD;
+            border: 1px solid #0D6EFD;
+        }
+
+        /* Sessão Final */
+        .final {
+            text-align: center;
+            padding: 20px;
+            color: #aaa;
+        }
+
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .popup .balance {
+            background-color: #02CC02;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            white-space: nowrap;
+            margin-bottom: 10px;
+        }
+
+        .popup .tutorial-button {
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            animation: pulse 1.5s infinite;
+			font-size: 20px; /* Aumenta o tamanho do texto */
+			width: auto; /* Ajuste automático da largura, ou defina um valor fixo */
+        }
+		
+		.popup .titulo {
+			font-size: 24px;
+		}
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sessão 1 -->
+    <div class="topo">
+        <div class="logo-container">
+            <img src="images/logoyt.png" alt="Logo" class="logo">
+        </div>
+        <div class="balance-container">
+            <div class="balance" id="balance">Balance: US$0.00</div>
+        </div>
+    </div>
+
+    <!-- Linha Divisória -->
+    <div class="divider"></div>
+
+    <div class="central-container">
+        <!-- Sessão 2 -->
+        <div class="aviso">
+            🎉 You've already started with <strong>$15.90 in your balance!</strong> Rate the videos below and <strong>earn +$7.90 for each review.</strong>
+        </div>
+
+        <!-- Sessão 3 -->
+        <div class="conteudo" id="sessao3">
+            <div class="titulo">Moana 2 - Official First Trailer (2024)</div>
+            <div class="video">
+                <iframe 
+                    src="https://www.youtube.com/embed/5B7KClxNhx0?rel=0&controls=1&modestbranding=1" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="container-info">
+                <img src="images/foto1.jpeg" alt="Foto do canal" class="foto">
+                <div class="info">
+                    <div class="nome">CinematicPro</div>
+                    <div>Official First Look Announcement Trailer</div>
+                </div>
+            </div>
+            <div class="botoes">
+                <button class="nao-gostei" onclick="rateVideo(this, 7.9, 'sessao4')">I didn't like</button>
+                <button class="gostei" onclick="rateVideo(this, 7.9, 'sessao4')">I like</button>
+            </div>
+        </div>
+
+        <!-- Sessão 4 -->
+        <div class="conteudo" id="sessao4">
+            <div class="titulo">Avatar - The Last Airbender</div>
+            <div class="video">
+                <iframe 
+                    src="https://www.youtube.com/embed/QOg9LUIvaig?rel=0&controls=1&modestbranding=1" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="container-info">
+                <img src="images/foto2.jpg" alt="Foto do canal" class="foto">
+                <div class="info">
+                    <div class="nome">Netflix</div>
+                    <div>Avatar: The Last Airbender - Official Trailer | Netflix</div>
+                </div>
+            </div>
+            <div class="botoes">
+                <button class="nao-gostei" onclick="rateVideo(this, 7.9, 'popup')">I didn't like</button>
+                <button class="gostei" onclick="rateVideo(this, 7.9, 'popup')">I like</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Final -->
+    <div class="final">All rights reserved 2024</div>
+
+    <!-- Pop-up -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup">
+            <div class="titulo">Balance receivable:</div>
+            <div class="balance" id="popupBalance">Balance: US$0.00</div>
+            <p>To complete the full withdrawal and <span style="color: blue;">access more reviews,</span> watch our <span style="color: blue;">7-minute tutorial!</span></p>
+            <a href="https://youtube.dailynewscoverage.site/video/" target="_blank">
+                <button class="tutorial-button">► WATCH TUTORIAL</button>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        let balanceElement = document.getElementById('balance');
+        let popupBalanceElement = document.getElementById('popupBalance');
+        let popupOverlay = document.getElementById('popupOverlay');
+        let currentBalance = 15.90;
+
+        function rateVideo(button, amount, nextSection) {
+            animateBalance(currentBalance, currentBalance + amount, balanceElement, 2000);
+            currentBalance += amount;
+            const parentContainer = button.closest('.botoes');
+            parentContainer.innerHTML = `<div style="color: #02CC02; font-weight: bold;">Thanks for rating! You received: +$${amount.toFixed(2)}</div>`;
+
+            setTimeout(() => {
+                if (nextSection === 'popup') {
+                    openPopup();
+                } else {
+                    document.getElementById(nextSection).scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 2000);
+        }
+
+        function openPopup() {
+            popupOverlay.style.display = 'flex';
+            animateBalance(0, 31.70, popupBalanceElement, 3000);
+        }
+
+        function animateBalance(start, end, element, duration) {
+            const increment = (end - start) / (duration / 20);
+            let current = start;
+            const interval = setInterval(() => {
+                current += increment;
+                if ((increment > 0 && current >= end) || (increment < 0 && current <= end)) {
+                    current = end;
+                    clearInterval(interval);
+                }
+                element.textContent = `Balance: US$${current.toFixed(2)}`;
+            }, 20);
+        }
+
+        window.onload = () => {
+            animateBalance(0, 15.90, balanceElement, 3000);
+        };
+    </script>
+</body>
+</html>
