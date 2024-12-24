@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>YouTube</title>
 	<link rel="icon" href="images/favicon.png" type="image/png">
-
+	
 	<link rel="preload" href="https://scripts.converteai.net/7ee76c7b-b701-481f-b973-2b478faae041/players/676a468b0534b8c67a1723f1/player.js" as="script">
 	<link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer/v1/smartplayer.min.js" as="script">
 	<link rel="preload" href="https://images.converteai.net/7ee76c7b-b701-481f-b973-2b478faae041/players/676a468b0534b8c67a1723f1/thumbnail.jpg" as="image">
@@ -29,7 +29,7 @@
 	  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
 	  document.head.appendChild(a);
 	</script>
-
+	
   <style>
     .live-badge {
       position: absolute;
@@ -89,6 +89,11 @@
       border-radius: 0.5rem;
 	  margin: 1rem 1rem;
     }
+
+    .video-details {
+      margin-top: 0; /* Corrige o espaço excessivo entre o vídeo e o texto */
+      padding-top: 0.5rem; /* Ajusta para melhor espaçamento visual */
+    }
   </style>
 </head>
 <body class="bg-black text-white font-sans">
@@ -105,7 +110,7 @@
     </div>
 
     <!-- Video Section -->
-    <div class="relative w-full" style="padding-bottom: 56.25%; position: relative;">
+    <div class="relative w-full" style="position: relative;">
       <div class="live-badge">
         <div class="red-dot"></div>
         LIVE | <span id="viewerCount" class="ml-1"></span> <span class="ml-1">viewers</span>
@@ -114,7 +119,7 @@
     </div>
 
     <!-- Video Details -->
-    <div class="p-4">
+    <div class="p-4 video-details">
       <h1 class="text-white text-lg font-bold">'The Key to Financial Freedom in 2025': Find Out How it Works!</h1>    
     </div>
 
