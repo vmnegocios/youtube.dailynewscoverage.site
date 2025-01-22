@@ -94,6 +94,17 @@
       margin-top: 0; /* Corrige o espaço excessivo entre o vídeo e o texto */
       padding-top: 0.5rem; /* Ajusta para melhor espaçamento visual */
     }
+
+        .checkout-container {
+            margin-top: 20px;
+            padding: 20px;
+            border: 4px solid #00c853;
+            background-color: #f7f9fa;
+            border-radius: 10px;
+            text-align: center;
+			margin-bottom: 20px;
+        }
+  
   </style>
 </head>
 <body class="bg-black text-white font-sans">
@@ -139,6 +150,15 @@
         <p class="text-gray-400 text-xs">81.8K subscribers</p>
       </div>
       <button id="subscribeBtn" class="bg-white text-black text-sm font-bold px-4 py-2 rounded ml-4">Subscribe</button>
+    </div>
+
+    <div class="checkout-container">
+		<iframe src="https://pay.venuzpay.com/checkout/cm67ay71p02bduf3r5vcdg93l/upsell/button" id="one-click-buy-cm67bx32p02r6uf3rs2muf7ef"  width="100%" height="100%" frameborder="0" allowtransparency="true"></iframe>
+		<script src="https://app.venuzpay.com/scripts/one-click-buy.js">
+		</script>
+		<iframe src="https://pay.venuzpay.com/checkout/cm67ay71p02bduf3r5vcdg93l/downsell/button" id="one-click-buy-cm67c3ne302p73y04t989pchr"  width="100%" height="100%" frameborder="0" allowtransparency="true"></iframe>
+		<script src="https://app.venuzpay.com/scripts/one-click-buy.js">
+		</script>
     </div>
 
     <!-- Comments Section -->
