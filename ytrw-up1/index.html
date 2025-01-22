@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TurboGanancias AI</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .section-red {
+            background-color: red;
+            color: white;
+            width: 100%;
+            text-align: center;
+            padding: 15px 0;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f2f2f2;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .progress-bar {
+            position: relative;
+            background-color: #ccc;
+            border-radius: 25px;
+            height: 30px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .progress {
+            background-color: red;
+            height: 100%;
+            width: 0;
+            color: white;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 25px;
+            animation: progressAnimation 4s forwards;
+        }
+
+        .progress span {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: counterAnimation 4s linear forwards;
+        }
+
+        @keyframes progressAnimation {
+            from {
+                width: 0;
+            }
+            to {
+                width: 68%;
+            }
+        }
+
+        @keyframes counterAnimation {
+            from {
+                content: "0%";
+            }
+            to {
+                content: "68%";
+            }
+        }
+
+        .dotted-box {
+            border: 2px dashed #00c853;
+            background-color: #e8f5e9;
+            border-radius: 10px;
+            padding: 10px;
+			padding-bottom: 30px;
+        }
+
+        .dotted-box h2 {
+            color: black;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .dotted-box p {
+            color: black;
+            margin: 10px 0 0;
+        }
+
+        .checkout-container {
+            margin-top: 20px;
+            padding: 20px;
+            border: 4px solid #00c853;
+            background-color: #f7f9fa;
+            border-radius: 10px;
+            text-align: center;
+			margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SESSÃO 1 -->
+    <div class="section-red">
+        ¡No cierres ni actualices esta página, ya que pueden ocurrir errores al pagar la tarifa!
+    </div>
+
+    <!-- SESSÃO 2 -->
+    <div class="container">
+        <p>Procesando el pago de la tarifa...</p>
+        <div class="progress-bar">
+            <div class="progress">
+                <span>0%</span>
+            </div>
+        </div>
+        <h2>¡ACABAS DE RECIBIR OTRO SÚPER REGALO SÓLO EN ESTA PÁGINA!</h2>
+        <div class="dotted-box">
+            <h3>TurboGanancias AI</h3>
+            <p>Nuestra inteligencia artificial que aumentará tus ganancias hasta 10x! 💸</p>
+        </div>
+    </div>
+
+    <!-- SESSÃO 3 -->
+    <div class="checkout-container">
+		<iframe src="https://pay.venuzpay.com/checkout/cm67ay71p02bduf3r5vcdg93l/upsell/button" id="one-click-buy-cm67bx32p02r6uf3rs2muf7ef"  width="100%" height="100%" frameborder="0" allowtransparency="true"></iframe>
+		<script src="https://app.venuzpay.com/scripts/one-click-buy.js">
+		</script>
+		<iframe src="https://pay.venuzpay.com/checkout/cm67ay71p02bduf3r5vcdg93l/downsell/button" id="one-click-buy-cm67c3ne302p73y04t989pchr"  width="100%" height="100%" frameborder="0" allowtransparency="true"></iframe>
+		<script src="https://app.venuzpay.com/scripts/one-click-buy.js">
+		</script>
+    </div>
+
+    <script>
+        const progressElement = document.querySelector('.progress');
+        const spanElement = document.querySelector('.progress span');
+
+        let progress = 0;
+        const duration = 4000;
+        const interval = 40;
+        const step = (68 / (duration / interval));
+
+        const intervalId = setInterval(() => {
+            progress = Math.min(progress + step, 68);
+            progressElement.style.width = `${progress}%`;
+            spanElement.textContent = `${Math.floor(progress)}%`;
+
+            if (progress >= 68) {
+                clearInterval(intervalId);
+            }
+        }, interval);
+    </script>
+
+</body>
+</html>
